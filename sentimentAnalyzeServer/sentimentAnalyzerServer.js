@@ -37,9 +37,9 @@ function getNLUInstance() {
 
 
 //The default endpoint for the webserver
-//app.get("/",(req,res)=>{
-//    res.render('index.html');
-//  });
+app.get("/",(req,res)=>{
+    res.render('index.html');
+  });
 
 //The endpoint for the webserver ending with /url/emotion
 app.get("/url/emotion", (req,res) => {
@@ -69,9 +69,9 @@ app.get("/url/emotion", (req,res) => {
 });
 
 //The endpoint for the webserver ending with /url/sentiment
-//app.get("/url/sentiment", (req,res) => {
-//    return res.send("url sentiment for "+req.query.url);
-//});
+app.get("/url/sentiment", (req,res) => {
+    return res.send("url sentiment for "+req.query.url);
+});
 
 app.get("/url/sentiment", (req,res) => {
     let urlToAnalyze = req.query.url
@@ -100,9 +100,9 @@ app.get("/url/sentiment", (req,res) => {
 });
 
 //The endpoint for the webserver ending with /text/emotion
-//app.get("/text/emotion", (req,res) => {
-//    return res.send({"happy":"10","sad":"90"});
-//});
+app.get("/text/emotion", (req,res) => {
+    return res.send({"happy":"10","sad":"90"});
+});
 
 app.get("/text/emotion", (req,res) => {
     let textToAnalyze = req.query.text
@@ -130,9 +130,9 @@ app.get("/text/emotion", (req,res) => {
     });
 });
 
-//app.get("/text/sentiment", (req,res) => {
-//    return res.send("text sentiment for "+req.query.text);
-//});
+app.get("/text/sentiment", (req,res) => {
+    return res.send("text sentiment for "+req.query.text);
+});
 
 app.get("/text/sentiment", (req,res) => {
     let textToAnalyze = req.query.text
