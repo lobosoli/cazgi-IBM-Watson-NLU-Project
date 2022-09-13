@@ -12,11 +12,11 @@ app.use(cors_app());
 /*Uncomment the following lines to loan the environment 
 variables that you set up in the .env file*/
 
-// const dotenv = require('dotenv');
-// dotenv.config();
+const dotenv = require('dotenv');
+dotenv.config();
 
-// const api_key = process.env.API_KEY;
-// const api_url = process.env.API_URL;
+const api_key = process.env.API_KEY;
+const api_url = process.env.API_URL;
 
 function getNLUInstance() {
     /*Type the code to create the NLU instance and return it.
@@ -69,9 +69,9 @@ app.get("/url/emotion", (req,res) => {
 });
 
 //The endpoint for the webserver ending with /url/sentiment
-app.get("/url/sentiment", (req,res) => {
-    return res.send("url sentiment for "+req.query.url);
-});
+//app.get("/url/sentiment", (req,res) => {
+//    return res.send("url sentiment for "+req.query.url);
+//});
 
 app.get("/url/sentiment", (req,res) => {
     let urlToAnalyze = req.query.url
@@ -91,7 +91,6 @@ app.get("/url/sentiment", (req,res) => {
     naturalLanguageUnderstanding.analyze(analyzeParams)
     .then(analysisResults => {
         //Retrieve the sentiment and return it as a formatted string
-
         return res.send(analysisResults.result.keywords[0].sentiment,null,2);
     })
     .catch(err => {
@@ -100,9 +99,9 @@ app.get("/url/sentiment", (req,res) => {
 });
 
 //The endpoint for the webserver ending with /text/emotion
-app.get("/text/emotion", (req,res) => {
-    return res.send({"happy":"10","sad":"90"});
-});
+//app.get("/text/emotion", (req,res) => {
+//    return res.send({"happy":"10","sad":"90"});
+//});
 
 app.get("/text/emotion", (req,res) => {
     let textToAnalyze = req.query.text
@@ -130,9 +129,9 @@ app.get("/text/emotion", (req,res) => {
     });
 });
 
-app.get("/text/sentiment", (req,res) => {
-    return res.send("text sentiment for "+req.query.text);
-});
+//app.get("/text/sentiment", (req,res) => {
+//    return res.send("text sentiment for "+req.query.text);
+//});
 
 app.get("/text/sentiment", (req,res) => {
     let textToAnalyze = req.query.text
